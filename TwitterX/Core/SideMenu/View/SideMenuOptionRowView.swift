@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct SideMenuOptionRowView: View {
+
+    let viewModel: SideMenuViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+            HStack(spacing: 16) {
+                Image(systemName: viewModel.imagename)
+                    .font(.title)
+                    .foregroundStyle(Color.gray)
+                
+                Text(viewModel.title)
+                    .font(.title2)
+                    .foregroundStyle(Color.black)
+                
+                Spacer()
+            }
+            .frame(height: 40)
+            .padding(.horizontal)
+        }
 }
 
 #Preview {
-    SideMenuOptionRowView()
+    SideMenuOptionRowView(viewModel: .profile)
 }

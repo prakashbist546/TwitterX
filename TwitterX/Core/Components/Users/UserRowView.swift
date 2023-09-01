@@ -9,7 +9,25 @@ import SwiftUI
 
 struct UserRowView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: 15) {
+            Circle()
+                .frame(width: 48, height: 48)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text("jocker")
+                    .font(.headline).bold()
+                    .foregroundStyle(Color.black)
+                
+                Text("Heath Ledger")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.gray)
+                
+            }
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 4)
     }
 }
 

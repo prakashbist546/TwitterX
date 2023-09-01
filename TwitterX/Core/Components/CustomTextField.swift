@@ -8,11 +8,37 @@
 import SwiftUI
 
 struct CustomTextField: View {
+    let imageName: String
+    let placeholderText: String
+    let isSecureField: Bool?
+    @Binding var text: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Image(systemName: imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .foregroundStyle(Color(.darkGray))
+                
+                if isSecureField ?? false {
+                    SecureField(placeholderText, text: $text)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                } else {
+                    TextField(placeholderText, text: $text)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                }
+            }
+            
+            Divider()
+                .background(Color(.darkGray))
+        }
     }
 }
 
 #Preview {
-    CustomTextField()
+    CustomTextField(imageName: "envelope", placeholderText: "Email", isSecureField: false, text: .constant(""))
 }
